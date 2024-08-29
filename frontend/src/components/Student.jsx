@@ -78,6 +78,13 @@ function Student() {
       <div className="App">
         <div className="container">
           <form >
+          
+            <div class="mb-3 row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword"/>
+              </div>
+            </div>
         <div className="form-group">
             <label className="form-label"><h1>Student Management System in Django React API </h1></label>
             <input type="Text" className="form-control" id="student_id" hidden
@@ -87,15 +94,53 @@ function Student() {
             }}/>           
            
           </div>
+            
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Student Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
+          </div>
 
-          <div className="mb-3">
-            <label className="form-label">Student Name</label>
-            <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
-            value={name}
-            onChange={(event)=>{
-              setName(event.target.value);
-            }}/>           
-           
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Student Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Student Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Student Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Student Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Student Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
           </div>
 
           <div className="mb-3">
@@ -121,7 +166,8 @@ function Student() {
           <button className="btn btn-warning" onClick={update}>Update</button>
         </form>
 
-      <table className="table table-dark" align="center">
+      <table className="table table-striped" align="center">
+
   <thead>
     <tr>
       <th scope="col">Student ID</th>
