@@ -3,6 +3,9 @@ import {useEffect, useState } from "react";
 function Student() {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
+  const [last_name, setLastName] = useState('');
+  const [father_name, setFatherName] = useState('');
+  const [course, setCourse] = useState('');
   const [address, setAddress] = useState('');
   const [fee, setFee] = useState('');
   const [students, setUsers] = useState([]);
@@ -21,13 +24,20 @@ function Student() {
     event.preventDefault();
     try{
       await axios.post("http://127.0.0.1:8000/student/",{
-        name: name, 
+        id: id,
+        name: name,
+        last_name: last_name,
+        father_name: father_name,
+        course: course,
         address: address,
         fee: fee
       });
       alert("Student Registration Successful");
       setId("");
       setName("");
+      setLastName("");
+      setFatherName("");
+      setCourse("");
       setAddress("");
       setFee("");
       Load();
@@ -39,6 +49,9 @@ function Student() {
 
   async function editStudent(students){
     setName(students.name);
+    setLastName(students.last_name);
+    setFatherName(students.father_name);
+    setCourse(students.course);
     setAddress(students.address);
     setFee(students.fee);
     setId(students.id);
@@ -57,12 +70,18 @@ function Student() {
       await axios.put("http://127.0.0.1:8000/student/" + students.find(u => u.id === id).id || id,{
         id: id,
         name: name,
+        last_name: last_name,
+        father_name: father_name,
+        course: course,
         address: address,
         fee: fee
       });
       alert("Record Updated Successfully");
       setId("");
       setName("");
+      setLastName("");
+      setFatherName("");
+      setCourse("");
       setAddress("");
       setFee("");
       Load();
@@ -78,13 +97,6 @@ function Student() {
       <div className="App">
         <div className="container">
           <form >
-          
-            <div class="mb-3 row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword"/>
-              </div>
-            </div>
         <div className="form-group">
             <label className="form-label"><h1>Student Management System in Django React API </h1></label>
             <input type="Text" className="form-control" id="student_id" hidden
@@ -96,72 +108,53 @@ function Student() {
           </div>
             
           <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label">Student Name</label>
+            <label className="col-sm-2 col-form-label">First Name</label>
               <div class="col-sm-10">
-                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
+                <input type="Text" className="form-control" id="student_first_name" placeholder = "Enter First Name"
                 value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Last Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="student_last_name" placeholder = "Enter Last Name"
+                value={last_name}onChange={(event)=>{setLastName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Father Name</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="student_father_name" placeholder = "Enter Father Name"
+                value={father_name}onChange={(event)=>{setFatherName(event.target.value);}}/> 
+              </div>
+          </div>
+
+          <div className="mb-3 row">
+            <label className="col-sm-2 col-form-label">Course</label>
+              <div class="col-sm-10">
+                <input type="Text" className="form-control" id="student_course" placeholder = "Enter Course"
+                value={course}onChange={(event)=>{setCourse(event.target.value);}}/> 
               </div>
           </div>
 
           <div className="mb-3 row">
             <label className="col-sm-2 col-form-label">Student Name</label>
               <div class="col-sm-10">
-                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
-                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+                <input type="Text" className="form-control" id="student_fee" placeholder = "Enter Fee"
+                value={fee}onChange={(event)=>{setFee(event.target.value);}}/> 
               </div>
           </div>
 
           <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label">Student Name</label>
+            <label className="col-sm-2 col-form-label">Address</label>
               <div class="col-sm-10">
-                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
-                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
+                <input type="Text" className="form-control" id="student_address" placeholder = "Enter Address"
+                value={address}onChange={(event)=>{setAddress(event.target.value);}}/> 
               </div>
           </div>
 
-          <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label">Student Name</label>
-              <div class="col-sm-10">
-                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
-                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
-              </div>
-          </div>
-
-          <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label">Student Name</label>
-              <div class="col-sm-10">
-                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
-                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
-              </div>
-          </div>
-
-          <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label">Student Name</label>
-              <div class="col-sm-10">
-                <input type="Text" className="form-control" id="studentName" placeholder = "Enter Student Name"
-                value={name}onChange={(event)=>{setName(event.target.value);}}/> 
-              </div>
-          </div>
-
-          <div className="mb-3">
-            <label className="form-label">Student Address</label>
-            <input type="Text" className="form-control" id="studentAddress" placeholder = "Enter Student Address"
-            value={address}
-            onChange={(event)=>{
-              setAddress(event.target.value);
-            }}/>           
-           
-          </div> 
-
-          <div className="mb-3">
-            <label className="form-label">Student fee</label>
-            <input type="Text" className="form-control" id="employeeFee" placeholder = "Enter Student Phone"
-            value={fee}
-            onChange={(event)=>{
-              setFee(event.target.value);
-            }}/>           
-           
-          </div>
           <button className="btn btn-primary" onClick={save}>Register</button>
           <button className="btn btn-warning" onClick={update}>Update</button>
         </form>
@@ -170,9 +163,12 @@ function Student() {
 
   <thead>
     <tr>
-      <th scope="col">Student ID</th>
-      <th scope="col">Student Name</th>
-      <th scope="col">Student Address</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Father Name</th>
+      <th scope="col">Course</th>
+      <th scope="col">Address</th>
       <th scope="col">Student Fee</th>
       <th scope="col">Action</th>
     </tr>
@@ -182,6 +178,9 @@ function Student() {
       <tr key={student.id}>
         <th scope="row">{student.id}</th>
         <td>{student.name}</td>
+        <td>{student.last_name}</td>
+        <td>{student.father_name}</td>
+        <td>{student.course}</td>
         <td>{student.address}</td>
         <td>{student.fee}</td>
         <td>
