@@ -10,4 +10,5 @@ class Student(models.Model):
     address = models.CharField(max_length=255)
 
 class Course(models.Model):
-    course = models.CharField(max_length=255)
+    course = models.CharField(max_length=25)
+    fee = models.IntegerField()
