@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import {useEffect, useState } from "react";
-function Course() {
+function Student() {
   const [id, setId] = useState('');
   const [course, setCourse] = useState('');
   const [fee, setFee] = useState('');
@@ -124,7 +123,7 @@ function Course() {
             <label className="col-sm-2 col-form-label"> Course </label>
               <div class="col-sm-10">
                 <input type="Text" className="form-control" id="course" placeholder = "Enter Your Course"
-                value={course}onChange={(event)=>{setCourse(event.target.value);}}/> 
+                value={course}onChange={(event)=>{setName(event.target.value);}}/> 
               </div>
           </div>
 
@@ -139,86 +138,6 @@ function Course() {
           <button className="btn btn-primary" onClick={save}>Register</button>
           <button className="btn btn-warning" onClick={update}>Update</button>
         </form>
-
-
-
-        <div className='container mt-5'>
-            <div className='row'>
-                <div className='col-md-12'>
-                    <div className='card'>
-                        <div className='card-header'>
-                            <h4> Student List
-                                <Link to ="/student/create" style={ {margin: '0px 0px 0px 1000px'} } className = "btn btn-primary">Add Student </Link>
-                                <Link to ="/student/store" style={ {margin: '0px 0px 0px 1000px'} } className = "btn btn-primary">Add  </Link>
-                            </h4>
-                        </div>
-                        <div className='card-body'>
-                            <table className="table table-stripped">
-                                <thead>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Course</td>
-                                        <td>Fee</td>
-                                        <td>Edit</td>
-                                        <td>Delete</td>
-                                    </tr>
-                                </thead>
-                              <tbody>
-                                {courses.map((course) => (
-                                <tr key={course.id}>
-                                  <th scope="row">{course.id}</th>
-                                  <td>{course.course}</td>
-                                  <td>{course.fee}</td>
-                                  <td>
-                                    <button
-                                      type="button"
-                                      className="btn btn-warning"
-                                      onClick={() => editStudent(course)}
-                                    >
-                                      Edit
-                                    </button>
-                                    <button
-                                      type="button"
-                                      className="btn btn-danger"
-                                      onClick={() => DeleteStudent(course.id)}
-                                    >
-                                      Delete
-                                    </button>
-                                  </td>
-                                </tr>
-                              ))}
-                              </tbody>
-
-
-                                {/* <tbody>
-                                    { students && students.map( (student) => {
-                                        return(
-                                          <tr key={student.id}>
-                                            <td>{student.id}</td>
-                                          <td>{student.name}</td>
-                                          <td>{student.course}</td>
-                                          <td>{student.email}</td>
-                                          <td>{student.phone}</td> 
-                                          <td><Link to="/" className = "btn btn-success">Edit </Link></td>
-                                            <td><button className = "btn btn-danger">Delete </button></td>
-                                          </tr>
-                                        )
-
-                                    })}
-                                    
-                                </tbody> */}
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
 
       <table className="table table-striped" align="center">
 
@@ -257,9 +176,11 @@ function Course() {
   </tbody>
 </table>
         </div>
-      </div>      
+      </div>
+
+      
     );
   }
-
+  
   export default Course;
   

@@ -7,6 +7,7 @@ import Contact from '../pages/Contact.jsx';
 import StudentList from '../pages/Student.jsx';
 import Addstudents from '../pages/Addstudents.jsx';
 import Addemployee from '../pages/Addemp.jsx';
+import Courses from '../pages/Course.jsx';
 
 
 function MyRouter(){
@@ -16,6 +17,7 @@ function MyRouter(){
             <Route path="/about-us" element={<About />} />  
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/students" element={<StudentList />} />
+            <Route path="/course" element={<Courses />} />
             <Route path="/student/create" element={<Addstudents />} />
             <Route path="/student/store" element={<Addemployee />} />
         </Routes>
