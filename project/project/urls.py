@@ -6,13 +6,15 @@ urlpatterns = [
     path('student/', views.studentApi),  # This handles requests to "student/"
     re_path(r'^student/([0-9]+)$', views.studentApi),  # This handles requests to "student/<id>"
     path('admin/', admin.site.urls),  # Admin route
-]
 
-urlpatterns = [
     path('course/', views.courseApi),  # This handles requests to "student/"
     re_path(r'^course/([0-9]+)$', views.courseApi),  # This handles requests to "student/<id>"
-    path('admin/', admin.site.urls),  # Admin route
 ]
+
+# urlpatterns = [
+#     path('course/<int:id>/', views.courseApi, name='delete_course'),
+#     # Other URL patterns
+# ]
 
 
 # from django.contrib import admin

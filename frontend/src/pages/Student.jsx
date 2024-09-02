@@ -170,7 +170,8 @@ function Student() {
       <th scope="col">Course</th>
       <th scope="col">Address</th>
       <th scope="col">Student Fee</th>
-      <th scope="col">Action</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -191,6 +192,8 @@ function Student() {
           >
             Edit
           </button>
+          </td>
+          <td>
           <button
             type="button"
             className="btn btn-danger"

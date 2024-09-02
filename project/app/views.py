@@ -21,10 +21,10 @@ def studentApi(request,id=0):
             return JsonResponse("Student Added Successfully",safe=False)
         return JsonResponse("Failed to Add",safe=False)
     elif request.method=="PUT":
-        student_data=JSONParser.parse(request)
-        student=Student.objects.git(id=id)
+        student_data=JSONParser().parse(request)
+        student=Student.objects.get(id=id)
         student_serializer=StudentSerializer(student,data=student_data)
-        if student_serializer.is_vlaid():
+        if student_serializer.is_valid():
             student_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
         return JsonResponse("Failed to Update")
@@ -49,14 +49,14 @@ def courseApi(request,id=0):
             return JsonResponse("Course Added Successfully",safe=False)
         return JsonResponse("Failed to Add",safe=False)
     elif request.method=="PUT":
-        course_data=JSONParser.parse(request)
-        course=Course.objects.git(id=id)
-        student_serializer=StudentSerializer(course,data=course_data)
-        if course_serializer.is_vlaid():
+        course_data=JSONParser().parse(request)
+        course=Course.objects.get(id=id)
+        course_serializer=CourseSerializer(course,data=course_data)
+        if course_serializer.is_valid():
             course_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
         return JsonResponse("Failed to Update")
     elif request.method=="DELETE":
         course=Course.objects.get(id=id)
         course.delete()
-        return JsonResponse("Deleted Successfully",safe=False)
+        return JsonResponse("Course Data Deleted Successfully",safe=False)

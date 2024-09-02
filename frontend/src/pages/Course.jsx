@@ -73,43 +73,7 @@ function Course() {
     return (
       <div className="App">
         <div className="container">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"/></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                </div>
-            </div>
-            </nav>
-          <form >
+                  <form >
         <div className="form-group">
             <label className="form-label"><h1>Student Management System in Django React API </h1></label>
             <input type="Text" className="form-control" id="student_id" hidden
@@ -129,7 +93,7 @@ function Course() {
           </div>
 
           <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label"> Course </label>
+            <label className="col-sm-2 col-form-label"> Fee </label>
               <div class="col-sm-10">
                 <input type="Text" className="form-control" id="fee" placeholder = "Enter Your fee"
                 value={fee}onChange={(event)=>{setFee(event.target.value);}}/> 
@@ -140,16 +104,14 @@ function Course() {
           <button className="btn btn-warning" onClick={update}>Update</button>
         </form>
 
-
-
         <div className='container mt-5'>
             <div className='row'>
                 <div className='col-md-12'>
                     <div className='card'>
                         <div className='card-header'>
-                            <h4> Student List
-                                <Link to ="/student/create" style={ {margin: '0px 0px 0px 1000px'} } className = "btn btn-primary">Add Student </Link>
-                                <Link to ="/student/store" style={ {margin: '0px 0px 0px 1000px'} } className = "btn btn-primary">Add  </Link>
+                            <h4> Courses
+                                {/* <Link to ="/student/create" style={ {margin: '0px 0px 0px 1000px'} } className = "btn btn-primary">Add Student </Link> */}
+                                <Link to ="/course/store" style={ {margin: '0px 0px 0px 1000px'} } className = "btn btn-primary"> New </Link>
                             </h4>
                         </div>
                         <div className='card-body'>
@@ -177,6 +139,8 @@ function Course() {
                                     >
                                       Edit
                                     </button>
+                                    </td>
+                                    <td>
                                     <button
                                       type="button"
                                       className="btn btn-danger"
@@ -188,74 +152,12 @@ function Course() {
                                 </tr>
                               ))}
                               </tbody>
-
-
-                                {/* <tbody>
-                                    { students && students.map( (student) => {
-                                        return(
-                                          <tr key={student.id}>
-                                            <td>{student.id}</td>
-                                          <td>{student.name}</td>
-                                          <td>{student.course}</td>
-                                          <td>{student.email}</td>
-                                          <td>{student.phone}</td> 
-                                          <td><Link to="/" className = "btn btn-success">Edit </Link></td>
-                                            <td><button className = "btn btn-danger">Delete </button></td>
-                                          </tr>
-                                        )
-
-                                    })}
-                                    
-                                </tbody> */}
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-      <table className="table table-striped" align="center">
-
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col"> Course </th>
-      <th scope="col"> Fee </th>
-      <th scope="col"> Action </th>
-    </tr>
-  </thead>
-  <tbody>
-    {courses.map((course) => (
-      <tr key={course.id}>
-        <th scope="row">{course.id}</th>
-        <td>{course.course}</td>
-        <td>{course.fee}</td>
-        <td>
-          <button
-            type="button"
-            className="btn btn-warning"
-            onClick={() => editStudent(course)}
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={() => DeleteStudent(course.id)}
-          >
-            Delete
-          </button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
         </div>
       </div>      
     );
