@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import toastr from 'toastr';
+import 'toastr/build/toastr.min.css';
+import Swal from 'sweetalert2';  // Import SweetAlert2
+
 function Course() {
   const [id, setId] = useState('');
   const [course, setCourse] = useState('');
@@ -25,14 +31,20 @@ function Course() {
         course: course,
         fee: fee
       });
-      alert("Student Registration Successful");
+      // alert("This is not enogh");
+      // Swal.fire('Success!', 'Record Updated Successfully', 'success'); 
+      // toast.success("Course Added Successfully");
+      toastr.success("Course Added Successfully");
+    
       setId("");
       setCourse("");
       setFee("");
       Load();
     }
     catch(err){
-      alert("Course Registration Failed");
+      // alert("Course Registration Failed");
+      // toast.error("Record Registered failed");
+      toastr.error("Course Registration Failed");
     }
   }
 
@@ -44,8 +56,9 @@ function Course() {
 
   async function DeleteStudent(id){
     await axios.delete("http://127.0.0.1:8000/course/"+id);
-    alert("Course Deleted Successfully");
-    console.log("Data Deleted Failed");
+    // alert("Course Deleted Successfully");
+    toast.error("Course Deleted Successfully");
+    
     Load();
   }
 
@@ -54,13 +67,13 @@ function Course() {
     try{
       await axios.put("http://127.0.0.1:8000/course/" + courses.find(u => u.id === id).id || id,{
         id: id,
-        course: course,
-        fee: fee
+        course: course
       });
-      alert("Course Updated Successfully");
+      toastr.success("Course Added Successfully");
+      // alert("Course Updated Successfully");
       setId("");
       setCourse("");
-      setFee("");
+    
       Load();
     }
     catch(err){
@@ -73,9 +86,9 @@ function Course() {
     return (
       <div className="App">
         <div className="container">
-                  <form >
-        <div className="form-group">
-            <label className="form-label"><h1>Student Management System in Django React API </h1></label>
+        <form >
+          <div className="form-group">
+            <label className="form-label"><h1> </h1></label>
             <input type="Text" className="form-control" id="student_id" hidden
             value={id}
             onChange={(event)=>{
@@ -89,14 +102,6 @@ function Course() {
               <div class="col-sm-10">
                 <input type="Text" className="form-control" id="course" placeholder = "Enter Your Course"
                 value={course}onChange={(event)=>{setCourse(event.target.value);}}/> 
-              </div>
-          </div>
-
-          <div className="mb-3 row">
-            <label className="col-sm-2 col-form-label"> Fee </label>
-              <div class="col-sm-10">
-                <input type="Text" className="form-control" id="fee" placeholder = "Enter Your fee"
-                value={fee}onChange={(event)=>{setFee(event.target.value);}}/> 
               </div>
           </div>
 
@@ -120,7 +125,6 @@ function Course() {
                                     <tr>
                                         <td>ID</td>
                                         <td>Course</td>
-                                        <td>Fee</td>
                                         <td>Edit</td>
                                         <td>Delete</td>
                                     </tr>
@@ -130,7 +134,7 @@ function Course() {
                                 <tr key={course.id}>
                                   <th scope="row">{course.id}</th>
                                   <td>{course.course}</td>
-                                  <td>{course.fee}</td>
+                                  
                                   <td>
                                     <button
                                       type="button"
